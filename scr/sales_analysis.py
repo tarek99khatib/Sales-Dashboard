@@ -26,6 +26,10 @@ print(df['Sub-Category'].unique())
 # check the postal code column
 print(df['Postal Code'].unique())
 
+
+# check the prduct id 
+print(df['Product ID'].unique())
+
 # print the nan values in the dataset
 print(df[df.isna().any(axis=1)])
 
@@ -51,6 +55,46 @@ for c in date_cols:
     df[c] = d
 
 for c in date_cols:
-    print(f"{c}: {df[c].isna().sum()} NaT بعد التحويل من أصل {len(df)} صف")
+    print(f"{c}: {df[c].isna().sum()} NaT from {len(df)} rows")
     
-print(df.columns)
+print(df.info())
+print(df.columns) # Display the columns in the dataset
+
+# strip whitespace from string columns
+cat_cols = ["Ship Mode", "Segment", "Country", "City", "State", "Region", 
+            "Category", "Sub-Category", "Product Name"]
+
+for c in cat_cols:
+    df[c] = df[c].astype(str).str.strip()
+    
+# for the id columns, we will convert them to string
+id_cols = ["Order ID", "Customer ID", "Product ID"]
+for c in id_cols:
+    df[c] = df[c].astype(str).str.strip()
+    df[c] = df[c].str.title() # Convert to title case
+
+# postal code column
+df["Postal Code"] = df["Postal Code"].astype("Int64")
+df.dropna(subset=["Postal Code"], inplace=True) 
+
+# cleaning the sales column
+df["Sales"] = (df["Sales"].astype(str)
+                              .str.replace(r'[\$,]', '', regex=True)
+                              .astype(float))
+
+# cleaning logic based on the 'Order Date' column and 'Ship Date' column
+df = df[df["Ship Date"] >= df["Order Date"]]
+
+# delete duplicate rows
+df = df.drop_duplicates()
+
+# check the outliers in the dataset
+print(df[df["Sales"] < 0])
+
+print(df.info()) # Check the info of the cleaned dataset
+
+df.drop(columns=["Order Date_raw", "Ship Date_raw"], inplace=True) # Drop the raw date columns
+
+# save the cleaned dataset
+df.to_csv("sales_dashboard/data/processed/sales_data_cleaned.csv", index=False)
+
