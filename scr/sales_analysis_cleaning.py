@@ -5,7 +5,7 @@ import seaborn as sns
 
 
  ####### this script is for cleaning the sales dataset #########
-df = pd.read_csv("sales_dashboard/data/raw/train.csv")
+df = pd.read_csv("data/raw/train.csv")
 
 # Display the first few rows and info to check the data
 print(df.head())
@@ -71,7 +71,6 @@ for c in cat_cols:
 id_cols = ["Order ID", "Customer ID", "Product ID"]
 for c in id_cols:
     df[c] = df[c].astype(str).str.strip()
-    df[c] = df[c].str.title() # Convert to title case
 
 # postal code column
 df["Postal Code"] = df["Postal Code"].astype("Int64")
@@ -96,5 +95,4 @@ print(df.info()) # Check the info of the cleaned dataset
 df.drop(columns=["Order Date_raw", "Ship Date_raw"], inplace=True) # Drop the raw date columns
 
 # save the cleaned dataset
-df.to_csv("sales_dashboard/data/processed/sales_data_cleaned.csv", index=False)
-
+df.to_csv("data/processed/sales_data_cleaned.csv", index=False)
