@@ -149,3 +149,5 @@ plt.tight_layout()
 plt.savefig("figures/sales_by_ship_mode.png")
 plt.close()
 
+
+print(df["Postal Code"].unique())

@@ -1,14 +1,14 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 
 
- ####### this script is for cleaning the sales dataset #########
-df = pd.read_csv("data/raw/train.csv")
+####### this script is for cleaning the sales dataset #########
+df = pd.read_csv("data/raw/sales_data_raw.csv")
 
 # Display the first few rows and info to check the data
 print(df.head())
+print(df["Postal Code"].unique())
+
 print(df.info()) # Check for missing values in the dataset
 print(df.isnull().sum())
 
