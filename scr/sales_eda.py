@@ -149,5 +149,3 @@ plt.tight_layout()
 plt.savefig("figures/sales_by_ship_mode.png")
 plt.close()
 
-palette = sns.color_palette("Set2", n_colors=len(df["Category"].unique()))
-print(palette.as_hex())
