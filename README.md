@@ -48,7 +48,7 @@ Average Days to Ship by Ship Mode : ![Monthly Sales Trend](figures/sales_by_ship
 
 
 
-kills Demonstrated
+skills Demonstrated
 	•	Data cleaning & preprocessing (Pandas)
 	•	Exploratory analysis & visualization (Seaborn/Matplotlib)
 	•	KPI definition & pivoting for stakeholders
