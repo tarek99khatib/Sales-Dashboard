@@ -6,7 +6,7 @@ The goal is to surface actionable insights on sales performance by category, sub
 Tableau Dashboard - 
     Live dashboard (Tableau Public): [[tableau dashboard](https://public.tableau.com/app/profile/tarek.khatib8857/viz/sales_dashboard_17554536951620/Dashboard1)]
 
-![tablea dash](tableau/screen_shot_dashboard.png)
+![tablea dash](tableau/dashboard.png)
 
 
 
